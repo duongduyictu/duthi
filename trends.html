@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xu Hướng Công Nghệ 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset và cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Nền particles */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 20, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        header .logo {
+            font-size: 30px;
+            font-weight: 700;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 35px;
+        }
+
+        header nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #00d4ff;
+            transform: scale(1.1);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 150px 50px 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section h1 {
+            font-size: 48px;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            animation: fadeIn 1s ease;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            color: #fff;
+            margin: 40px 0 20px;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .content-section p {
+            font-size: 16px;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: #16213e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #2a2a4e;
+        }
+
+        table th {
+            background: #00d4ff;
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        table td {
+            color: #d0d0d0;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #00d4ff;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #00d4ff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 26, 0.9);
+            padding: 40px 50px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 1px solid #2a2a4e;
+        }
+
+        footer .social-links a {
+            color: #e0e0e0;
+            margin: 0 20px;
+            font-size: 24px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #00d4ff;
+            transform: scale(1.2);
+        }
+
+        footer p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            header { padding: 15px 30px; }
+            header .logo { font-size: 26px; }
+            header nav ul li { margin-left: 20px; }
+            .content-section { padding: 120px 30px 30px; max-width: 100%; }
+            .content-section h1 { font-size: 40px; }
+            .content-section h2 { font-size: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            header { 
+                padding: 15px 20px; 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            header .logo { margin-bottom: 10px; }
+            header nav ul { 
+                flex-direction: column; 
+                margin-top: 15px; 
+            }
+            header nav ul li { 
+                margin: 10px 0; 
+            }
+            header nav ul li a { font-size: 14px; }
+            .content-section { 
+                padding: 100px 20px 20px; 
+                margin: 0 10px; 
+                border-radius: 10px; 
+            }
+            .content-section h1 { font-size: 32px; }
+            .content-section h2 { font-size: 20px; }
+            .content-section p { font-size: 14px; }
+            table th, table td { padding: 10px; font-size: 12px; }
+            .btn { padding: 10px 20px; font-size: 14px; }
+            footer { padding: 30px 20px; }
+            footer .social-links a { margin: 0 15px; font-size: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 10px 15px; }
+            header .logo { font-size: 22px; }
+            header nav ul li a { font-size: 12px; }
+            .content-section { padding: 80px 15px 15px; }
+            .content-section h1 { font-size: 28px; }
+            .content-section h2 { font-size: 18px; }
+            .content-section p { font-size: 13px; }
+            table { font-size: 10px; }
+            table th, table td { padding: 8px; }
+            .btn { padding: 8px 15px; font-size: 12px; }
+            footer { padding: 20px 15px; }
+            footer .social-links a { margin: 0 10px; font-size: 18px; }
+            footer p { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nền particles -->
+    <canvas id="particles"></canvas>
+
+    <header>
+        <div class="logo">Technology&AI</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content-section">
+        <h1>Xu Hướng Công Nghệ 2025: Định Hình Tương Lai</h1>
+
+        <!-- Giới thiệu -->
+        <h2>Công Nghệ Đang Thay Đổi Thế Giới</h2>
+        <p>Năm 2025 đánh dấu một bước ngoặt lớn trong lịch sử công nghệ, nơi các xu hướng mới không chỉ cải thiện cuộc sống mà còn định hình lại cách chúng ta làm việc, giao tiếp, và sáng tạo. Từ trí tuệ nhân tạo siêu thông minh đến thực tế ảo nhập vai, những xu hướng này đang dẫn dắt nhân loại đến một kỷ nguyên mới.</p>
+        <p>Hãy cùng khám phá những công nghệ hot nhất hiện nay và cách chúng đang biến đổi thế giới!</p>
+
+        <!-- AI siêu thông minh -->
+        <h2>1. AI Siêu Thông Minh (Generative AI 2.0)</h2>
+        <p>AI không còn chỉ dừng lại ở việc trả lời câu hỏi hay phân tích dữ liệu. Năm 2025, Generative AI đã tiến hóa thành công cụ sáng tạo vượt bậc, có thể viết sách, thiết kế sản phẩm, và thậm chí sáng tác nhạc với chất lượng ngang ngửa con người.</p>
+        <p>Ví dụ, các mô hình như Grok (từ xAI) hay các phiên bản mới của ChatGPT không chỉ hiểu ngữ cảnh sâu sắc mà còn tự học từ dữ liệu thực tế, mở ra kỷ nguyên "AI đồng sáng tạo" cùng con người.</p>
+
+        <!-- Thực tế ảo và metaverse -->
+        <h2>2. Metaverse: Thế Giới Ảo Thành Hiện Thực</h2>
+        <p>Metaverse đã vượt qua giai đoạn thử nghiệm để trở thành không gian sống thứ hai của hàng tỷ người. Với kính VR tiên tiến và công nghệ cảm ứng thực tế, bạn có thể làm việc, học tập, và giải trí trong các vũ trụ số sống động.</p>
+        <p>Các công ty như Meta và Epic Games đang đầu tư mạnh để biến metaverse thành nền tảng giao tiếp chính, nơi ranh giới giữa thực và ảo dần biến mất.</p>
+
+        <!-- Công nghệ lượng tử -->
+        <h2>3. Máy Tính Lượng Tử: Sức Mạnh Tính Toán Vô Hạn</h2>
+        <p>Máy tính lượng tử đang bước ra khỏi phòng thí nghiệm để giải quyết các vấn đề mà máy tính truyền thống mất hàng triệu năm mới xử lý được. Năm 2025, IBM và Google đã đạt được những bước tiến lớn, đưa công nghệ này vào ứng dụng thực tế như mã hóa, tối ưu hóa logistics, và mô phỏng hóa học.</p>
+        <p>Đây là cuộc cách mạng tính toán, mở ra khả năng giải mã những bí ẩn lớn nhất của vũ trụ.</p>
+
+        <!-- Bảng xu hướng -->
+        <h2>Các Xu Hướng Nổi Bật Khác</h2>
+        <p>Dưới đây là những xu hướng khác đang định hình năm 2025:</p>
+        <table>
+            <tr>
+                <th>Xu hướng</th>
+                <th>Tác động</th>
+            </tr>
+            <tr>
+                <td>6G</td>
+                <td>Tốc độ mạng vượt trội, kết nối vạn vật trong tích tắc.</td>
+            </tr>
+            <tr>
+                <td>Robot thông minh</td>
+                <td>Tự động hóa nhà máy, hỗ trợ cá nhân với AI tích hợp.</td>
+            </tr>
+            <tr>
+                <td>Công nghệ xanh</td>
+                <td>Pin tái tạo, AI tối ưu năng lượng chống biến đổi khí hậu.</td>
+            </tr>
+            <tr>
+                <td>Blockchain 2.0</td>
+                <td>Hợp đồng thông minh tự động, bảo mật tài chính tuyệt đối.</td>
+            </tr>
+        </table>
+
+        <!-- Tầm quan trọng -->
+        <h2>Tại Sao Các Xu Hướng Này Quan Trọng?</h2>
+        <p>Những xu hướng này không chỉ là công nghệ mới mà còn là động lực thúc đẩy sự tiến bộ toàn cầu:</p>
+        <ul>
+            <li><strong>Kinh tế</strong>: Tạo ra hàng triệu việc làm mới trong lĩnh vực AI, VR, và lượng tử.</li>
+            <li><strong>Xã hội</strong>: Thay đổi cách con người tương tác, từ làm việc từ xa đến giáo dục nhập vai.</li>
+            <li><strong>Môi trường</strong>: Công nghệ xanh giúp giảm lượng khí thải, bảo vệ hành tinh.</li>
+        </ul>
+        <p>Chúng ta đang đứng trước ngưỡng cửa của một cuộc cách mạng công nghệ lớn nhất trong lịch sử!</p>
+
+        <!-- Tương lai -->
+        <h2>Tương Lai: Công Nghệ Sẽ Đưa Chúng Ta Đến Đâu?</h2>
+        <p>Với tốc độ phát triển hiện tại, năm 2030 có thể chứng kiến sự hợp nhất giữa con người và máy móc, nơi AI không chỉ là công cụ mà còn là đối tác. Metaverse sẽ trở thành "internet 3.0", và máy tính lượng tử sẽ giải quyết những thách thức lớn nhất của nhân loại, từ y học đến khám phá vũ trụ.</p>
+        <p>Đây là thời điểm để bạn tham gia, học hỏi, và định hình tương lai cùng những xu hướng này!</p>
+
+        <!-- Kết luận -->
+        <h2>Kết Luận</h2>
+        <p>Công nghệ năm 2025 không chỉ là bước tiến, mà là cú nhảy vọt đưa nhân loại đến những chân trời mới. Từ AI siêu thông minh, metaverse sống động, đến sức mạnh lượng tử, đây là thời đại của những điều không tưởng trở thành hiện thực. Bạn đã sẵn sàng để đón đầu xu hướng chưa?</p>
+        <a href="https://www.technologyreview.com" target="_blank" class="btn">Cập Nhật Xu Hướng Mới Nhất</a>
+    </section>
+
+
+    <!-- JavaScript cho particles -->
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        let numberOfParticles = window.innerWidth < 768 ? 50 : 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.01;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                if (particlesArray[i].size <= 0.2) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                    particlesArray.push(new Particle());
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            numberOfParticles = window.innerWidth < 768 ? 50 : 100;
+        });
+    </script>
+</body>
+</html>

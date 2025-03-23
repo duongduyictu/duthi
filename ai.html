@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI: Sự Mạnh Mẽ Và Phát Triển</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset và cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Nền particles */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 20, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        header .logo {
+            font-size: 30px;
+            font-weight: 700;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 35px;
+        }
+
+        header nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #00d4ff;
+            transform: scale(1.1);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 150px 50px 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section h1 {
+            font-size: 48px;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            animation: fadeIn 1s ease;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            color: #fff;
+            margin: 40px 0 20px;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .content-section p {
+            font-size: 16px;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: #16213e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #2a2a4e;
+        }
+
+        table th {
+            background: #00d4ff;
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        table td {
+            color: #d0d0d0;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #00d4ff;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #00d4ff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 26, 0.9);
+            padding: 40px 50px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 1px solid #2a2a4e;
+        }
+
+        footer .social-links a {
+            color: #e0e0e0;
+            margin: 0 20px;
+            font-size: 24px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #00d4ff;
+            transform: scale(1.2);
+        }
+
+        footer p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            header { padding: 15px 30px; }
+            header .logo { font-size: 26px; }
+            header nav ul li { margin-left: 20px; }
+            .content-section { padding: 120px 30px 30px; max-width: 100%; }
+            .content-section h1 { font-size: 40px; }
+            .content-section h2 { font-size: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            header { 
+                padding: 15px 20px; 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            header .logo { margin-bottom: 10px; }
+            header nav ul { 
+                flex-direction: column; 
+                margin-top: 15px; 
+            }
+            header nav ul li { 
+                margin: 10px 0; 
+            }
+            header nav ul li a { font-size: 14px; }
+            .content-section { 
+                padding: 100px 20px 20px; 
+                margin: 0 10px; 
+                border-radius: 10px; 
+            }
+            .content-section h1 { font-size: 32px; }
+            .content-section h2 { font-size: 20px; }
+            .content-section p { font-size: 14px; }
+            table th, table td { padding: 10px; font-size: 12px; }
+            .btn { padding: 10px 20px; font-size: 14px; }
+            footer { padding: 30px 20px; }
+            footer .social-links a { margin: 0 15px; font-size: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 10px 15px; }
+            header .logo { font-size: 22px; }
+            header nav ul li a { font-size: 12px; }
+            .content-section { padding: 80px 15px 15px; }
+            .content-section h1 { font-size: 28px; }
+            .content-section h2 { font-size: 18px; }
+            .content-section p { font-size: 13px; }
+            table { font-size: 10px; }
+            table th, table td { padding: 8px; }
+            .btn { padding: 8px 15px; font-size: 12px; }
+            footer { padding: 20px 15px; }
+            footer .social-links a { margin: 0 10px; font-size: 18px; }
+            footer p { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nền particles -->
+    <canvas id="particles"></canvas>
+
+    <header>
+        <div class="logo">Technology&AI</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content-section">
+        <h1>AI: Sự Mạnh Mẽ Và Phát Triển Vượt Bậc</h1>
+
+        <!-- Giới thiệu -->
+        <h2>Sự Ra Đời Và Phát Triển Của AI</h2>
+        <p>Trí tuệ nhân tạo (AI) đã trải qua một hành trình dài từ những ý tưởng sơ khai trong thập niên 1950 đến một công nghệ thống trị thế kỷ 21. Từ khi Alan Turing đặt câu hỏi "Máy móc có thể suy nghĩ không?" đến nay, AI đã phát triển vượt bậc nhờ sự gia tăng của dữ liệu lớn (big data), sức mạnh tính toán, và các thuật toán học máy tiên tiến.</p>
+        <p>Ngày nay, AI không chỉ là một khái niệm khoa học viễn tưởng mà đã trở thành một phần không thể thiếu trong cuộc sống, từ trợ lý ảo trên điện thoại đến các hệ thống tự động hóa trong công nghiệp.</p>
+
+        <!-- Sức mạnh của AI -->
+        <h2>Sức Mạnh Vô Song Của AI</h2>
+        <p>AI sở hữu khả năng xử lý và phân tích lượng dữ liệu khổng lồ với tốc độ mà con người không thể sánh bằng. Nó có thể học hỏi, thích nghi, và đưa ra quyết định dựa trên dữ liệu thời gian thực, mở ra những khả năng chưa từng có:</p>
+        <ul>
+            <li><strong>Tốc độ</strong>: AI xử lý hàng triệu phép tính mỗi giây, vượt xa khả năng của bộ não con người.</li>
+            <li><strong>Độ chính xác</strong>: Các mô hình AI hiện đại đạt độ chính xác gần 100% trong các nhiệm vụ như nhận diện khuôn mặt hay chẩn đoán y khoa.</li>
+            <li><strong>Khả năng tự học</strong>: Với học sâu (deep learning), AI có thể tự cải thiện mà không cần can thiệp từ con người.</li>
+        </ul>
+
+        <!-- Tác động qua các lĩnh vực -->
+        <h2>Tác Động Đến Mọi Lĩnh Vực</h2>
+        <p>AI đang định hình lại thế giới qua sự hiện diện mạnh mẽ trong nhiều ngành:</p>
+        <table>
+            <tr>
+                <th>Lĩnh vực</th>
+                <th>Tác động của AI</th>
+            </tr>
+            <tr>
+                <td>Y tế</td>
+                <td>Phát hiện ung thư sớm hơn bác sĩ, cá nhân hóa phương pháp điều trị.</td>
+            </tr>
+            <tr>
+                <td>Giao thông</td>
+                <td>Xe tự lái giảm tai nạn, tối ưu hóa giao thông đô thị.</td>
+            </tr>
+            <tr>
+                <td>Giáo dục</td>
+                <td>Tutor AI cá nhân, học liệu thông minh dựa trên nhu cầu học sinh.</td>
+            </tr>
+            <tr>
+                <td>Kinh doanh</td>
+                <td>Dự đoán xu hướng thị trường, tự động hóa quy trình sản xuất.</td>
+            </tr>
+        </table>
+
+        <!-- Sự phát triển vượt bậc -->
+        <h2>Sự Phát Triển Không Ngừng Nghỉ</h2>
+        <p>Từ những năm 2000, AI đã chứng kiến những bước tiến vượt bậc:</p>
+        <ul>
+            <li><strong>2012</strong>: AlexNet đánh bại các đối thủ trong cuộc thi nhận diện ảnh ImageNet, mở ra kỷ nguyên học sâu.</li>
+            <li><strong>2016</strong>: AlphaGo của DeepMind thắng nhà vô địch cờ vây thế giới, chứng minh AI có thể vượt qua trí tuệ con người trong các trò chơi phức tạp.</li>
+            <li><strong>2020s</strong>: AI tạo sinh (Generative AI) như ChatGPT, DALL-E tạo ra văn bản, hình ảnh với chất lượng gần như con người.</li>
+        </ul>
+        <p>Các công ty như Google, OpenAI, và xAI đang đẩy nhanh tốc độ phát triển, đưa AI đến gần hơn với trí tuệ tổng quát (AGI).</p>
+
+        <!-- Tương lai của AI -->
+        <h2>Tương Lai: AI Sẽ Đi Đâu?</h2>
+        <p>Với tốc độ phát triển hiện tại, AI hứa hẹn sẽ thay đổi hoàn toàn cách chúng ta sống và làm việc:</p>
+        <ul>
+            <li><strong>AGI</strong>: AI có khả năng học và thực hiện bất kỳ nhiệm vụ nào như con người.</li>
+            <li><strong>Tự động hóa toàn diện</strong>: Robot và hệ thống AI thay thế hàng triệu công việc thủ công và trí óc.</li>
+            <li><strong>Hợp nhất với con người</strong>: Công nghệ như Neuralink có thể tích hợp AI trực tiếp vào não bộ.</li>
+        </ul>
+        <p>Tuy nhiên, sự phát triển này cũng đặt ra thách thức về đạo đức, việc làm, và an ninh mà xã hội cần giải quyết.</p>
+
+        <!-- Kết luận -->
+        <h2>Kết Luận</h2>
+        <p>AI không chỉ mạnh mẽ mà còn đang phát triển với tốc độ chóng mặt, mở ra một kỷ nguyên mới cho nhân loại. Từ những thành tựu hiện tại đến tiềm năng tương lai, AI là minh chứng cho sức mạnh của công nghệ khi được khai thác đúng cách. Hãy sẵn sàng để chứng kiến và tham gia vào cuộc cách mạng này!</p>
+        <a href="https://www.xai.com" target="_blank" class="btn">Khám Phá Thêm Về AI</a>
+    </section>
+
+
+    <!-- JavaScript cho particles -->
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        let numberOfParticles = window.innerWidth < 768 ? 50 : 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.01;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                if (particlesArray[i].size <= 0.2) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                    particlesArray.push(new Particle());
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            numberOfParticles = window.innerWidth < 768 ? 50 : 100;
+        });
+    </script>
+</body>
+</html>

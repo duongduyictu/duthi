@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lập Trình Python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Nền particles */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 20, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        header .logo {
+            font-size: 30px;
+            font-weight: 700;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 35px;
+        }
+
+        header nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #00d4ff;
+            transform: scale(1.1);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 150px 50px 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section h1 {
+            font-size: 48px;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            animation: fadeIn 1s ease;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            color: #fff;
+            margin: 40px 0 20px;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .content-section p {
+            font-size: 16px;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+        }
+
+        /* Code Block */
+        pre {
+            background: #0f0f1a;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            color: #00d4ff;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00d4ff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+
+        code {
+            color: #00d4ff;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: #16213e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #2a2a4e;
+        }
+
+        table th {
+            background: #00d4ff;
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        table td {
+            color: #d0d0d0;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #00d4ff;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #00d4ff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 26, 0.9);
+            padding: 40px 50px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 1px solid #2a2a4e;
+        }
+
+        footer .social-links a {
+            color: #e0e0e0;
+            margin: 0 20px;
+            font-size: 24px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #00d4ff;
+            transform: scale(1.2);
+        }
+
+        footer p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            header { padding: 15px 30px; }
+            header .logo { font-size: 26px; }
+            header nav ul li { margin-left: 20px; }
+            .content-section { padding: 120px 30px 30px; max-width: 100%; }
+            .content-section h1 { font-size: 40px; }
+            .content-section h2 { font-size: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            header { 
+                padding: 15px 20px; 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            header .logo { margin-bottom: 10px; }
+            header nav ul { 
+                flex-direction: column; 
+                margin-top: 15px; 
+            }
+            header nav ul li { 
+                margin: 10px 0; 
+            }
+            header nav ul li a { font-size: 14px; }
+            .content-section { 
+                padding: 100px 20px 20px; 
+                margin: 0 10px; 
+                border-radius: 10px; 
+            }
+            .content-section h1 { font-size: 32px; }
+            .content-section h2 { font-size: 20px; }
+            .content-section p { font-size: 14px; }
+            pre { 
+                font-size: 12px; 
+                padding: 15px; 
+            }
+            table th, table td { padding: 10px; font-size: 12px; }
+            .btn { padding: 10px 20px; font-size: 14px; }
+            footer { padding: 30px 20px; }
+            footer .social-links a { margin: 0 15px; font-size: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 10px 15px; }
+            header .logo { font-size: 22px; }
+            header nav ul li a { font-size: 12px; }
+            .content-section { padding: 80px 15px 15px; }
+            .content-section h1 { font-size: 28px; }
+            .content-section h2 { font-size: 18px; }
+            .content-section p { font-size: 13px; }
+            pre { font-size: 10px; padding: 10px; }
+            table { font-size: 10px; }
+            table th, table td { padding: 8px; }
+            .btn { padding: 8px 15px; font-size: 12px; }
+            footer { padding: 20px 15px; }
+            footer .social-links a { margin: 0 10px; font-size: 18px; }
+            footer p { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nền particles -->
+    <canvas id="particles"></canvas>
+
+    <header>
+        <div class="logo">Technology&AI</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content-section">
+        <h1>Lập Trình Python: Từ Cơ Bản Đến Nâng Cao</h1>
+
+        <!-- Giới thiệu -->
+        <h2>Python - Ngôn Ngữ Của Tương Lai</h2>
+        <p>Python không chỉ là một ngôn ngữ lập trình, mà còn là chìa khóa mở ra cánh cửa đến với công nghệ hiện đại. Từ phát triển web, phân tích dữ liệu, đến trí tuệ nhân tạo, Python đều tỏa sáng nhờ cú pháp dễ hiểu và hệ sinh thái thư viện phong phú.</p>
+        <p>Bài viết này sẽ dẫn dắt bạn từ những bước đầu tiên với Python đến các kỹ thuật nâng cao, kèm theo các dự án thực tế để bạn áp dụng ngay.</p>
+
+        <!-- Cài đặt -->
+        <h2>Bắt Đầu Với Python</h2>
+        <p>Để sử dụng Python, bạn cần cài đặt nó:</p>
+        <pre><code># Kiểm tra cài đặt Python
+python3 --version
+# Hoặc
+python --version</code></pre>
+        <p>Sau khi cài đặt, bạn có thể chạy Python từ terminal hoặc sử dụng IDE như VS Code, PyCharm để viết code.</p>
+
+        <!-- Chương trình đầu tiên -->
+        <h2>Chương Trình Python Đầu Tiên</h2>
+        <p>Hãy viết một chương trình đơn giản để làm quen:</p>
+        <pre><code># Chương trình chào hỏi
+name = input("Nhập tên của bạn: ")
+print(f"Chào mừng {name} đến với TechBit!")
+for i in range(3):
+    print(f"Lần chào thứ {i+1}")</code></pre>
+
+        <!-- Biến và kiểu dữ liệu -->
+        <h2>Biến và Kiểu Dữ Liệu</h2>
+        <p>Dưới đây là cách khai báo và sử dụng các kiểu dữ liệu cơ bản:</p>
+        <pre><code># Các kiểu dữ liệu
+integer = 42
+float_num = 3.14
+string = "Python"
+list_data = ["Code", "Learn", "Build"]
+dict_data = {"language": "Python", "version": 3.11}
+
+print(f"Số nguyên: {integer}")
+print(f"Số thực: {float_num}")
+print(f"Chuỗi: {string}")
+print(f"Danh sách: {list_data}")
+print(f"Từ điển: {dict_data}")</code></pre>
+
+        <!-- Vòng lặp và điều kiện -->
+        <h2>Điều Khiển Luồng Chương Trình</h2>
+        <p>Sử dụng <code>if</code>, <code>for</code>, và <code>while</code> để điều khiển logic:</p>
+        <pre><code># Điều kiện
+temperature = 30
+if temperature > 35:
+    print("Trời quá nóng!")
+elif temperature > 25:
+    print("Trời ấm áp.")
+else:
+    print("Trời mát mẻ.")
+
+# Vòng lặp for
+for num in range(1, 6):
+    print(f"Số: {num}")
+
+# Vòng lặp while
+countdown = 5
+while countdown > 0:
+    print(f"Đếm ngược: {countdown}")
+    countdown -= 1</code></pre>
+
+        <!-- Hàm -->
+        <h2>Tạo Hàm Thú Vị</h2>
+        <p>Hàm giúp tái sử dụng code một cách hiệu quả:</p>
+        <pre><code># Hàm tính diện tích hình tròn
+def circle_area(radius):
+    pi = 3.14159
+    return pi * radius ** 2
+
+print(f"Diện tích hình tròn (r=5): {circle_area(5)}")
+print(f"Diện tích hình tròn (r=10): {circle_area(10)}")</code></pre>
+
+        <!-- Dự án mẫu -->
+        <h2>Dự Án: Trò Chơi Đoán Số</h2>
+        <p>Hãy thử lập trình một trò chơi đoán số đơn giản:</p>
+        <pre><code># Trò chơi đoán số
+import random
+
+def guess_game():
+    secret_number = random.randint(1, 100)
+    attempts = 0
+    print("Chào mừng đến với trò chơi đoán số (1-100)!")
+
+    while True:
+        guess = int(input("Nhập số bạn đoán: "))
+        attempts += 1
+        if guess < secret_number:
+            print("Số lớn hơn!")
+        elif guess > secret_number:
+            print("Số nhỏ hơn!")
+        else:
+            print(f"Chúc mừng! Bạn đoán đúng sau {attempts} lần.")
+            break
+
+guess_game()</code></pre>
+
+        <!-- Thư viện -->
+        <h2>Thư Viện Python Đỉnh Cao</h2>
+        <p>Dưới đây là một số thư viện bạn nên biết:</p>
+        <table>
+            <tr>
+                <th>Thư viện</th>
+                <th>Công dụng</th>
+                <th>Cài đặt</th>
+            </tr>
+            <tr>
+                <td>NumPy</td>
+                <td>Tính toán số học</td>
+                <td><code>pip install numpy</code></td>
+            </tr>
+            <tr>
+                <td>Pandas</td>
+                <td>Xử lý dữ liệu</td>
+                <td><code>pip install pandas</code></td>
+            </tr>
+            <tr>
+                <td>Requests</td>
+                <td>Gửi yêu cầu HTTP</td>
+                <td><code>pip install requests</code></td>
+            </tr>
+        </table>
+        <p>Ví dụ sử dụng Requests để lấy dữ liệu từ web:</p>
+        <pre><code># Lấy dữ liệu từ API
+import requests
+
+response = requests.get("https://api.github.com")
+print(response.status_code)  # 200 = Thành công
+print(response.json())  # Dữ liệu JSON</code></pre>
+
+        <!-- Kết luận -->
+        <h2>Kết Luận</h2>
+        <p>Python là cánh cửa để bạn bước vào thế giới lập trình. Với những kiến thức trên, bạn đã sẵn sàng xây dựng các dự án thú vị. Hãy tiếp tục khám phá và sáng tạo!</p>
+        <a href="https://www.python.org" target="_blank" class="btn">Bắt Đầu Với Python</a>
+    </section>
+
+
+    <!-- JavaScript cho particles -->
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        let numberOfParticles = window.innerWidth < 768 ? 50 : 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.01;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                if (particlesArray[i].size <= 0.2) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                    particlesArray.push(new Particle());
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            numberOfParticles = window.innerWidth < 768 ? 50 : 100;
+        });
+    </script>
+</body>
+</html>
